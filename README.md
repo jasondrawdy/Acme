@@ -84,3 +84,7 @@ Pre-configured endpoints and models have been created to showcase possibility :
 `dotnet test`
 
 3. That's it! The test project should restore all required packages, migrate/populate the database tables, and start running all of the integration and unit tests within the testing project.
+
+## Demonstration
+https://github.com/jasondrawdy/Acme/assets/40871836/b470e55a-a8a1-486d-9a10-6c0ceaa6d08a
+
