@@ -1,0 +1,28 @@
+version: '3.9'
+
+services:
+  acme:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=5000
+      #- ASPNETCORE_HTTPS_PORTS=5001 # Uncomment if there's an SSL cert for the domain/host.
+    ports:
+      - "5000:5000"
+      #- "5001:5001" # Uncomment if there's an SSL cert for the domain/host.
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
+
+  acme.database:
+    container_name: 'postgres'
+    image: postgres:latest
+    environment:
+      POSTGRES_PASSWORD: password
+    ports:
+      - 5432:5432
+    networks:
+      - acme.network
+
+networks:
+  acme.network:
+    driver: bridge
